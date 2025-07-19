@@ -1,4 +1,38 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,13 +40,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Omaya Ice Cream Menu</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.css" integrity="sha512-GmZYQ9SKTnOea030Tbiat0Y+jhnYLIpsGAe6QTnToi8hI2nNbVMETHeK4wm4MuYMQdrc38x+sX77+kVD01eNsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Cairo', sans-serif;
-background: linear-gradient(to right, #ffc3c3, #9be9aa);    
-  margin: 0;
+      background: linear-gradient(to right, #ffc3c3, #9be9aa);    
+      margin: 0;
       padding: 0;
       direction: rtl;
       color: #333;
@@ -41,7 +78,7 @@ background: linear-gradient(to right, #ffc3c3, #9be9aa);
       flex-wrap: wrap;
     }
     nav button {
-      background: none ;
+      background: none;
       border: none;
       color: rgb(40, 0, 0);
       padding: 12px 20px;
@@ -53,9 +90,11 @@ background: linear-gradient(to right, #ffc3c3, #9be9aa);
       transition: all 0.3s ease;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    nav button:hover {
+    nav button:hover,
+    nav button.active {
       transform: scale(1.05);
       background: linear-gradient(to right, #e85c7d, #ffa4b8);
+      color: white;
     }
     .menu-section {
       padding: 40px 20px;
@@ -74,6 +113,10 @@ background: linear-gradient(to right, #ffc3c3, #9be9aa);
       font-size: 2em;
       color: #d6336c;
       position: relative;
+    }
+    .menu-section h2 img {
+      height: 50px;
+      vertical-align: middle;
     }
     table {
       width: 100%;
@@ -127,29 +170,29 @@ background: linear-gradient(to right, #ffc3c3, #9be9aa);
         margin: 8px 0;
       }
     }
-
-    
   </style>
 </head>
 <body>
   <header>
-    <img src="1-removebg-preview.png" height="150px" alt="">
+    <img src="1-removebg-preview.png" height="150px" alt="شعار أوميه">
   </header>
+
   <nav>
-    <button onclick="showSection('icecream')">🍦 آيس كريم</button>
-    <button onclick="showSection('rice')"><img src="rice_6106914.png" alt="" >  أرز بلبن</button>
-    <button onclick="showSection('cups')">🍨 كاسات</button>
-    <button onclick="showSection('kase')">🍧 كاسيتا</button>
-    <button onclick="showSection('arabic')">🍧 بوظة</button>
-    <button onclick="showSection('milkshake')">🥤 ميلك شيك</button>
-    <button onclick="showSection('hotdrinks')">☕ مشروبات ساخنة</button>
-    <button onclick="showSection('juices')">🍹 عصائر</button>
-    <button onclick="showSection('salad')">🍹 السلطة</button>
-    <button onclick="showSection('cocktails')">🍓 كوكتيلات</button>
-    <button onclick="showSection('special')">🎂 إضافات</button>
+    <button onclick="showSection('icecream', this)">🍦 آيس كريم</button>
+    <button onclick="showSection('rice', this)"><img src="rice_6106914.png" alt="رز بلبن">  أرز بلبن</button>
+    <button onclick="showSection('cups', this)">🍨 كاسات</button>
+    <button onclick="showSection('kase', this)">🍧 كاسيتا</button>
+    <button onclick="showSection('arabic', this)">🍧 بوظة</button>
+    <button onclick="showSection('milkshake', this)">🥤 ميلك شيك</button>
+    <button onclick="showSection('hotdrinks', this)">☕ مشروبات ساخنة</button>
+    <button onclick="showSection('juices', this)">🍹 عصائر</button>
+    <button onclick="showSection('salad', this)">🍹 السلطة</button>
+    <button onclick="showSection('cocktails', this)">🍓 كوكتيلات</button>
+    <button onclick="showSection('special', this)">🎂 إضافات</button>
   </nav>
 
-  <div class="menu-section" id="icecream">
+  <!-- باقي الأقسام كما هي بدون تعديل ... -->
+     <div class="menu-section" id="icecream">
     <h2><img src="ايس_كريم_سادة-removebg-preview.png"  alt=""></h2>
     <table>
       <tr><th>النكهات</th><th>بولة</th><th>كيلو</th></tr>
@@ -463,22 +506,22 @@ background: linear-gradient(to right, #ffc3c3, #9be9aa);
   </table>
 </div>
 
-
-
-
-
-
-
-
-
   <script>
-    function showSection(id) {
+    function showSection(id, button) {
       document.querySelectorAll('.menu-section').forEach(section => {
         section.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      if (button) {
+        button.classList.add('active');
+      }
     }
-    showSection('icecream');
+
+    showSection('icecream', document.querySelector('nav button'));
   </script>
 </body>
 </html>
