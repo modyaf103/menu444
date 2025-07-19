@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omaya Ice Cream Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.css" integrity="sha512-GmZYQ9SKTnOea030Tbiat0Y+jhnYLIpsGAe6QTnToi8hI2nNbVMETHeK4wm4MuYMQdrc38x+sX77+kVD01eNsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+background: linear-gradient(to right, #ffc3c3, #9be9aa);    
+  margin: 0;
+      padding: 0;
+      direction: rtl;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #ffc3c3, #9be9aa);
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    nav {
+      background: linear-gradient(to right, #ffc3c3, #9be9aa);
+      backdrop-filter: blur(5px);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+    nav button {
+      background: none ;
+      border: none;
+      color: rgb(40, 0, 0);
+      padding: 12px 20px;
+      margin: 5px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    nav button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #e85c7d, #ffa4b8);
+    }
+    .menu-section {
+      padding: 40px 20px;
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .menu-section.active {
+      display: block;
+    }
+    .menu-section h2 {
+      border-bottom: 3px solid #ffb6c1;
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+      font-size: 2em;
+      color: #d6336c;
+      position: relative;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    th, td {
+      border-bottom: 1px solid #f2f2f2;
+      padding: 14px 16px;
+      text-align: right;
+      font-size: 1.1em;
+    }
+    th {
+      background-color: #ffeef3;
+      color: #d6336c;
+      font-weight: bold;
+    }
+    tr:hover td {
+      background-color: #fff7fa;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+      nav button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+      }
+      th, td {
+        font-size: 0.95em;
+        padding: 10px;
+      }
+      .menu-section h2 {
+        font-size: 1.5em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav button {
+        width: 100%;
+        margin: 8px 0;
+      }
+    }
+
+    
+  </style>
+</head>
+<body>
+  <header>
+    <img src="1-removebg-preview.png" height="150px" alt="">
+  </header>
+  <nav>
+    <button onclick="showSection('icecream')">🍦 آيس كريم</button>
+    <button onclick="showSection('rice')"><img src="rice_6106914.png" alt="" >  أرز بلبن</button>
+    <button onclick="showSection('cups')">🍨 كاسات</button>
+    <button onclick="showSection('kase')">🍧 كاسيتا</button>
+    <button onclick="showSection('arabic')">🍧 بوظة</button>
+    <button onclick="showSection('milkshake')">🥤 ميلك شيك</button>
+    <button onclick="showSection('hotdrinks')">☕ مشروبات ساخنة</button>
+    <button onclick="showSection('juices')">🍹 عصائر</button>
+    <button onclick="showSection('salad')">🍹 السلطة</button>
+    <button onclick="showSection('cocktails')">🍓 كوكتيلات</button>
+    <button onclick="showSection('special')">🎂 إضافات</button>
+  </nav>
+
+  <div class="menu-section" id="icecream">
+    <h2><img src="ايس_كريم_سادة-removebg-preview.png"  alt=""></h2>
+    <table>
+      <tr><th>النكهات</th><th>بولة</th><th>كيلو</th></tr>
+      <tr><td><ul style="list-style: none; padding: 0;">
+  <li style="display: inline; margin-left: 10px;">شوكولاتة</li>
+  <li style="display: inline; margin-left: 10px;">كراميل</li>
+  <li style="display: inline; margin-left: 10px;">حليب ساده</li>
+  <li style="display: inline; margin-left: 10px;">موز</li>
+  <li style="display: inline; margin-left: 10px;">فراولة</li>
+  <li style="display: inline; margin-left: 10px;">مانجو</li>
+  <li style="display: inline; margin-left: 10px;">ليمون</li>
+  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <li style="display: inline; margin-left: 10px;">أناناس</li>
+  <li style="display: inline; margin-left: 10px;">توت</li>
+  <li style="display: inline; margin-left: 10px;">كيوي</li>
+    <li style="display: inline; margin-left: 10px;">كانتلوب</li>
+        <li style="display: inline; margin-left: 10px;">بولو ( ليمون نعناع) </li>
+
+
+
+</ul>
+</td><td>15</td><td>220</td></tr>
+    </table>
+
+
+
+    <h2><img src="5687.png"  alt=""></h2>
+        <table>
+      <tr><th>النكهات</th><th>بولة</th><th>كيلو</th></tr>
+      <tr><td><ul style="list-style-type:circle; padding-right: 20px; direction: rtl; font-family: 'Cairo', sans-serif;">
+  <!-- مجموعة الشوكولاتة -->
+  <li>شوكولا جلاكسي</li>
+  <li>شوكولا بالبندق</li>
+  <li>شوكولا سنيكرز</li>
+  <li>شوكولا بالبسكويت</li>
+  <li>شوكولا كيندر</li>
+
+  <!-- مجموعة الحليب -->
+  <li>حليب بالكاجو</li>
+  <li>حليب كيندر</li>
+  <li>حليب بالفواكة</li>
+  <li>حليب بندق</li>
+
+  <!-- مجموعة التارت -->
+  <li>تارت مانجو</li>
+  <li>تارت توت</li>
+  <li>تارت فراولة</li>
+
+  <!-- باقي العناصر -->
+  <li>ريد فيليت</li>
+  <li>تويكس</li>
+  <li>اوريو كراميل</li>
+  <li>اوريو</li>
+  <li>قهوة هوهوز</li>
+  <li>مانجو دوبل كريم</li>
+  <li>فراولة دوبل كريم</li>
+  <li>زبادي توت</li>
+  <li>زبادي فراولة</li>
+  <li>بابل جام</li>
+  <li>كروكان (كراميل - صوص كراميل - سوداني)</li>
+</ul>
+
+</td><td>17</td><td>240</td></tr>
+    </table>
+
+
+
+        <table>
+      <tr><th>النكهات</th><th>بولة</th><th>كيلو</th></tr>
+      <tr><td><ul style="list-style: none; padding: 0;">
+  <li style="display: inline; margin-left: 10px;">فستق</li>
+  <li style="display: inline; margin-left: 10px;">مستكة بالفستق</li>
+  <li style="display: inline; margin-left: 10px;">لوتس</li>
+
+</ul>
+</td><td>18</td><td>250</td></tr>
+    </table>
+  </div>
+
+
+
+
+  
+
+  <div class="menu-section" id="cups">
+    <h2>🍨 <img src="ايس_كريم_سادة__2_-removebg-preview.png"  alt=""></h2>
+    <h3>حسب الطلب</h3>
+    <table>
+      <tr><th>النوع</th><th>السعر</th></tr>
+      <tr><td>شوكولا مو</td><td>60</td></tr>
+      <tr><td>توتي فروتي</td><td>60 </td></tr>
+      <tr><td> بنانا سبليت</td><td>60 </td></tr>
+    </table>
+  </div>
+
+
+  <div class="menu-section" id="rice">
+    <h2> <img src="Annotation_2025-07-17_142200-removebg-preview.png"  alt=""></h2>
+    <h3>حسب الطلب</h3>
+    <table>
+      <tr><th>النوع</th><th>السعر</th></tr>
+      <tr><td>ارز باللبن سادة</td><td>15</td></tr>
+      <tr><td>ارز باللبن مع مكسرات</td><td>35 </td></tr>
+      <tr><td>ارز باللبن مع الايس كريم</td><td>30 </td></tr>
+      <tr><td>ارز باللين مع الايس كريم والمكسرات</td><td>50 </td></tr>
+      <tr><td>ارز باللبن مع العسل والقشطة</td><td>50 </td></tr>
+      <tr><td>ارز باللبن مع الفراكة</td><td>40 </td></tr>
+      <tr><td>ارز باللبن مع اللوتس</td><td>35 </td></tr>
+      <tr><td>ارز باللبن مع النوتيلا</td><td>30 </td></tr>
+    </table>
+  </div>
+
+  <div class="menu-section" id="arabic">
+    <h2><img src="4444-removebg-preview.png"  alt=""></h2>
+    <h3>ايس كريم سوري مصنوع يدويا من الحليب والقشطة و القليل من المستكة</h3>
+        <table>
+      <tr><th>الانواع</th><th>بولة</th><th>كيلو</th></tr>
+      <tr><td><ul style="list-style-type:circle; padding-right: 20px; direction: rtl; font-family: 'Cairo', sans-serif;">
+  <li> رول بوظة عربي قشطة</li>
+</ul>
+
+</td><td>45</td><td>240</td></tr>
+      <tr><td><ul style="list-style-type:circle; padding-right: 20px; direction: rtl; font-family: 'Cairo', sans-serif;">
+  <li> رول بوظة عربي فستق</li>
+</ul>
+
+</td><td>55</td><td>350</td></tr>
+      <tr><td><ul style="list-style-type:circle; padding-right: 20px; direction: rtl; font-family: 'Cairo', sans-serif;">
+  <li>رول بوظة عربي قشطة دوبل </li>
+</ul>
+
+</td><td>60</td><td>370</td></tr>
+      <tr><td><ul style="list-style-type:circle; padding-right: 20px; direction: rtl; font-family: 'Cairo', sans-serif;">
+  <li>بوظة عربي قشطة اكسترا فستق </li>
+</ul>
+
+</td><td>70</td><td>470</td></tr>
+    </table>
+  </div>
+
+
+
+
+
+
+
+  <div class="menu-section" id="kase">
+    <h2><img src="kkwwee.png"  alt=""></h2>
+    <h3> ثلاث اصناف من الايس كريم مغلفة بطبقة من الكيك</h3>
+        <table>
+      <tr><th>الانواع</th><th>طبق</th><th>كيلو</th></tr>
+      <tr><td><ul style="list-style-type:circle; padding-right: 20px; direction: rtl; font-family: 'Cairo', sans-serif;">
+  <li>قوس كاسيتا (ايس كريم ساده)</li>
+</ul>
+
+</td><td>50</td><td>220</td></tr>
+      <tr><td><ul style="list-style-type:circle; padding-right: 20px; direction: rtl; font-family: 'Cairo', sans-serif;">
+  <li>قوس كاسيتا (ايس كريم ميكس )</li>
+</ul>
+
+</td><td>55</td><td>240</td></tr>
+
+
+
+    </table>
+  </div>
+
+  <div class="menu-section" id="milkshake">
+    <h2><img src="ايس_كريم_سادة__1_-removebg-preview.png"  alt=""> </h2>
+    <table>
+      <tr><th>النكهات</th><th>M</th><th>L</th><th>مع كريمة</th></tr>
+      <tr><td>ميلك شيك شوكولا</td><td>45</td><td>55</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15+</td></tr>
+      <tr><td>ميلك شيك فانيليا</td><td>45</td><td>55</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15+</td></tr>
+      <tr><td>ميلك شيك فراولة</td><td>45</td><td>55</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15+</td></tr>
+      <tr><td>ميلك شيك ماكس</td><td>55</td><td>65</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15+</td></tr>
+    </table>
+  </div>
+
+  <div class="menu-section" id="hotdrinks">
+    <h2><img src="77777777.png"  alt=""></h2>
+    <table>
+      <tr><th>المشروب</th><th>السعر</th></tr>
+      <tr><td>شاي</td><td>15</td></tr>
+      <tr><td>قهوة</td><td>25</td></tr>
+      <tr><td>نسكافيه</td><td>25</td></tr>
+      <tr><td>كابتشينو</td><td>25</td></tr>
+    </table>
+  </div>
+
+  <div class="menu-section" id="juices">
+    <h2><img src="76890.png"  alt=""></h2>
+    <table>
+      <tr><th>النوع</th><th>M</th><th>L</th><th>زجاجة </th></tr>
+      <tr><td>عصير برتقال</td><td>20</td><td>30</td><td>&nbsp;&nbsp;&nbsp;40</td></tr>
+      <tr><td>عصير مانجو</td><td>20</td><td>30</td><td>&nbsp;&nbsp;50</td></tr>
+      <tr><td>عصير فراولة</td><td>20</td><td>30</td><td>&nbsp;&nbsp;&nbsp;50</td></tr>
+      <tr><td>عصير ليمون</td><td>20</td><td>30</td><td>&nbsp;&nbsp;&nbsp;40</td></tr>
+      <tr><td>عصير جزر</td><td>20</td><td>30</td><td>&nbsp;&nbsp;&nbsp;50</td></tr>
+      <tr><td>عصير كيوي</td><td>25</td><td>35</td><td>&nbsp;&nbsp;&nbsp;60</td></tr>
+      <tr><td>عصير خوخ</td><td>20</td><td>25</td><td></td></tr>
+    </table>
+
+
+  </div>
+
+  <div class="menu-section" id="cocktails">
+    <h2>🍓 كوكتيل</h2>
+  <table>
+    <tr><th>النوع</th><th>M</th><th>L</th></tr>
+    <tr><td>فواكه طبيعية</td><td>30.00</td><td>40.00</td></tr>
+    <tr><td>أوريو</td><td>55.00</td><td>70.00</td></tr>
+    <tr><td>موز وحليب</td><td>25.00</td><td>35.00</td></tr>
+    <tr><td>موز وحليب ونوتيلا</td><td>35.00</td><td>50.00</td></tr>
+    <tr><td>موز وحليب وفراولة</td><td>30.00</td><td>40.00</td></tr>
+    <tr><td>موز وحليب ومانجو</td><td>30.00</td><td>40.00</td></tr>
+    <tr><td>برتقال وموز</td><td>30.00</td><td>40.00</td></tr>
+    <tr><td>برتقال وموز وفراولة</td><td>30.00</td><td>40.00</td></tr>
+    <tr><td>برتقال وموز وكيوي</td><td>30.00</td><td>40.00</td></tr>
+    <tr><td>فراولة وكيوي</td><td>30.00</td><td>40.00</td></tr>
+    <tr><td>فراولة وأناناس</td><td>30.00</td><td>40.00</td></tr>
+    <tr><td>فراولة ومانجو</td><td>30.00</td><td>40.00</td></tr>
+    <tr><td>فواكه استوائية  <h5>(اناناس و كيوي و مانجو)</h5></td><td>35.00</td><td>45.00</td></tr>
+    <tr><td>أمبراطور <h5>(موز و حليب و قشطة و كريمة و فواكه و مانجو)</h5></td><td>50.00</td><td>75.00</td></tr>
+    <tr><td>قشاطي <h5>(موز و حليب و قشطة و فواكه و عسل)</h5></td><td>50.00</td><td>75.00</td></tr>
+    <tr><td>كوكتيل أميه <h5>(موز و حليب و قشطة و فواكه و نوتيلا و تويكس)</h5></td><td>60.00</td><td>85.00</td></tr>
+    <tr><td>كوكتيل سبيشال <h5>(موز و حليب و قشطة و فواكه و نوتيلا و كيتكات)</h5></td><td>60.00</td><td>85.00</td></tr>
+  </table>
+  </div>
+
+  <div class="menu-section" id="special">
+    <h2>🎂 إضافات </h2>
+    <table>
+      <tr><th>النوع</th><th>السعر</th></tr>
+
+      <tr><td>مكسرات</td><td>20</td></tr>
+      <tr><td>قشطة</td><td>20</td></tr>
+            <tr><td> كريمة</td><td>15 </td></tr>
+      <tr><td>شوكولا</td><td>5</td></tr>
+      <tr><td>فواكه</td><td>15</td></tr>
+      <tr><td>اللوتس</td><td>15</td></tr>
+    </table>
+  </div>
+
+
+
+
+<div class="menu-section" id="salad">
+  <h2>السلطة</h2>
+  <table>
+    <tr><th>النوع</th><th>الوصف</th><th>السعر</th></tr>
+    <tr>
+      <td>سلطة فواكه</td>
+      <td>تُقدم بالآيس كريم والفواكه الفرش والقشطة والكريمة بالمكسرات</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <td>سلطة فريش</td>
+      <td>تُقدم بالفواكه الفرش والقشطة والكريمة وشوكولا</td>
+      <td>110.00</td>
+    </tr>
+    <tr>
+      <td>سلطة دايت</td>
+      <td>فواكه طبيعية فرش</td>
+      <td>70.00</td>
+    </tr>
+    <tr>
+      <td>سلطة فواكه استوائية</td>
+      <td>تُقدم بالآيس كريم والفواكه الاستوائية والقشطة والكريمة بالمكسرات</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <td>سلطة كيت كات</td>
+      <td>تُقدم بالآيس كريم والفواكه الفرش والقشطة والكريمة وبسكوت كيت كات بالمكسرات</td>
+      <td>115.00</td>
+    </tr>
+    <tr>
+      <td>سلطة كرانشي</td>
+      <td>تُقدم بالآيس كريم وفواكه فرش وقشطة وكريمة وبسكوت كرانشي ومكسرات</td>
+      <td>115.00</td>
+    </tr>
+    <tr>
+      <td>سلطة فواكه كيندر</td>
+      <td>تُقدم بالآيس كريم والفواكه الفرش والقشطة والكريمة وشوكولا ونوتيلا وقطع شوكولا التويكس بالمكسرات</td>
+      <td>115.00</td>
+    </tr>
+    <tr>
+      <td>توكس أميه</td>
+      <td>تُقدم بالآيس كريم والفواكه الفرش والقشطة والكريمة وشوكولا ونوتيلا وقطع شوكولا التويكس بالمكسرات والقشطة</td>
+      <td>115.00</td>
+    </tr>
+    <tr>
+      <td>سلطة أوريو</td>
+      <td>تُقدم بالآيس كريم والفواكه الفرش والقشطة والكريمة وشوكولا ونوتيلا وقطع أوريو بالمكسرات</td>
+      <td>115.00</td>
+    </tr>
+    <tr>
+      <td>سلطة سبيشيال</td>
+      <td>تُقدم بالآيس كريم والفواكه الفرش والقشطة والكريمة وشوكولا ونوتيلا وقطع شوكولا الكت كات والكرانشي والقشطة</td>
+      <td>120.00</td>
+    </tr>
+    <tr>
+      <td>سلطة توتش</td>
+      <td>تُقدم بالآيس كريم والفواكه الفرش والمكسرات وسكوبين آيس كريم</td>
+      <td>120.00</td>
+    </tr>
+    <tr>
+      <td>سلطة فواكه بالبوظة العربي</td>
+      <td>---</td>
+      <td>120.00</td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.menu-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+    showSection('icecream');
+  </script>
+</body>
+</html>
