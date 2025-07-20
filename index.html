@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -45,8 +38,6 @@
       padding: 20px;
       text-align: center;
       box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
       z-index: 1000;
       flex-wrap: wrap;
     }
@@ -150,7 +141,19 @@
     <img src="1-removebg-preview.png" height="150px" alt="شعار أوميه">
   </header>
 
-
+  <nav>
+    <button onclick="showSection('icecream', this)">🍦 آيس كريم</button>
+    <button onclick="showSection('rice', this)"><img src="rice_6106914.png" alt="رز بلبن">  أرز بلبن</button>
+    <button onclick="showSection('cups', this)">🍨 كاسات</button>
+    <button onclick="showSection('kase', this)">🍧 كاسيتا</button>
+    <button onclick="showSection('arabic', this)">🍧 بوظة</button>
+    <button onclick="showSection('milkshake', this)">🥤 ميلك شيك</button>
+    <button onclick="showSection('hotdrinks', this)">☕ مشروبات ساخنة</button>
+    <button onclick="showSection('juices', this)">🍹 عصائر</button>
+    <button onclick="showSection('salad', this)">🍹 السلطة</button>
+    <button onclick="showSection('cocktails', this)">🍓 كوكتيلات</button>
+    <button onclick="showSection('special', this)">🎂 إضافات</button>
+  </nav>
 
   <!-- باقي الأقسام كما هي بدون تعديل ... -->
      <div class="menu-section" id="icecream">
@@ -467,6 +470,22 @@
   </table>
 </div>
 
+  <script>
+    function showSection(id, button) {
+      document.querySelectorAll('.menu-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
 
+      document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      if (button) {
+        button.classList.add('active');
+      }
+    }
+
+    showSection('icecream', document.querySelector('nav button'));
+  </script>
 </body>
 </html>
